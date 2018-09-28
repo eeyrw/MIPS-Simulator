@@ -33,7 +33,7 @@ class PipelineSimulator(object):
         
         # set up the main memory construct, a list index starting at 0
         # and continuing to 0xffc
-        self.mainmemory = dict([(x*4, 0) for x in range(0xffc/4)])
+        self.mainmemory = dict([(x*4, 0) for x in range(0xffc//4)])
 
         # programCounter to state where in the instruction collection
         # we are. to find correct spot in mainmemory add 0x100  
