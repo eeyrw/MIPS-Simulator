@@ -112,36 +112,36 @@ class PipelineSimulator(object):
 
     ### DEBUGGING INFORMATION PRINTING ### 
     def debug(self):
-        print "######################## debug ###########################"
+        print("######################## debug ###########################")
         self.printStageCollection() 
         self.printRegFile()
-        print "\n<ProgramCounter>", self.programCounter
+        print("\n<ProgramCounter>", self.programCounter)
         self.printPipeline()   
-        print "<CPI> : " , float(self.cycles) / float(self.instrCount) 
-        print "<Hazard List> : " , self.hazardList
+        print("<CPI> : " , float(self.cycles) / float(self.instrCount)) 
+        print("<Hazard List> : " , self.hazardList)
 
     def printPipeline(self):
-        print "\n<Pipeline>"
-        print repr(self.pipeline[0]) 
-        print repr(self.pipeline[2]) 
-        print repr(self.pipeline[3]) 
-        print repr(self.pipeline[4]) 
-        print repr(self.pipeline[1]) 
+        print("\n<Pipeline>")
+        print(repr(self.pipeline[0])) 
+        print(repr(self.pipeline[2])) 
+        print(repr(self.pipeline[3])) 
+        print(repr(self.pipeline[4])) 
+        print(repr(self.pipeline[1])) 
 
     def printRegFile(self):
         #"""
-        print "\n<Register File>"
-        for k,v in sorted(self.registers.iteritems()):
+        print("\n<Register File>")
+        for k,v in sorted(self.registers.items()):
             if len(k) != 3:
-                print k, " : " , v,
+                print(k, " : " , v, end=' ')
             else :
-                print "\n",k, " : ", v,
+                print("\n",k, " : ", v, end=' ')
                 
     def printStageCollection(self):
-        print "<Instruction Collection>"
-        for index, item in sorted(self.mainmemory.iteritems()):
+        print("<Instruction Collection>")
+        for index, item in sorted(self.mainmemory.items()):
             if item != 0:
-                print index, ": ", str(item)
+                print(index, ": ", str(item))
 
 class PipelineStage(object):
     def __init__(self, instruction, simulator):

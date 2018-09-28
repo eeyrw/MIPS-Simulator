@@ -39,7 +39,7 @@ class Instruction(object):
                          'writeMem': None, }
 
         for key in input:
-            if key in self.values.keys():
+            if key in list(self.values.keys()):
                 self.values[key] = input[key]
             else:
                 self.controls[key] = input[key]
@@ -127,7 +127,7 @@ class InstructionParser(object):
 
     def parseFile(self, filename):
         with open(filename) as f:
-            data = filter((lambda x: x != '\n'), f.readlines())
+            data = list(filter((lambda x: x != '\n'), f.readlines()))
             
             instructions = [self.parse(a.replace(',',' ')) for a in data]
             return instructions
